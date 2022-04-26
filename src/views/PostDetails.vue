@@ -27,7 +27,7 @@ export default {
     async function getPost() {
       try {
         const res = await axios.get(
-          "https://jsonplaceholder.typicode.com/posts/" + props.id
+          `${process.env.VUE_APP_POSTS_API}${props.id}`
         );
         post.value = res.data;
         console.log(res.data);

@@ -1,0 +1,32 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "First post",
+      "body": "The body of the first post",
+      "author": "Unknown",
+      "categories": [
+        "travel",
+        "food"
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Second post",
+      "body": "The body of the second post",
+      "author": "Diego",
+      "categories": [
+        "economics"
+      ]
+    },
+    {
+      "title": "Il titolo",
+      "body": "Il corpo di questo testo",
+      "categories": [
+        "food",
+        "politics"
+      ],
+      "id": 3
+    }
+  ]
+}

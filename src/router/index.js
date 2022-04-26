@@ -4,12 +4,18 @@ import Login from '../views/Login.vue';
 import Signup from '../views/Signup.vue';
 import PostDetails from '../views/PostDetails.vue';
 import NotFound from '../views/NotFound.vue';
+import CreatePost from '../views/CreatePost.vue';
 
 const routes = [
   {
     path: '/',
     name: 'Home',
     component: Home
+  },
+  {
+    path: '/new',
+    name: 'CreatePost',
+    component: CreatePost
   },
   {
     path: '/about',

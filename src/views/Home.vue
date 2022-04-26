@@ -26,7 +26,7 @@ export default {
     });
     async function getPosts() {
       try {
-        const res = await axios("https://jsonplaceholder.typicode.com/posts");
+        const res = await axios(process.env.VUE_APP_POSTS_API);
         posts.value = res.data;
         loading.value = false;
       } catch (err) {
