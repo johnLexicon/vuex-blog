@@ -2,6 +2,8 @@ import { createRouter, createWebHistory } from 'vue-router';
 import Home from '../views/Home.vue';
 import Login from '../views/Login.vue';
 import Signup from '../views/Signup.vue';
+import PostDetails from '../views/PostDetails.vue';
+import NotFound from '../views/NotFound.vue';
 
 const routes = [
   {
@@ -23,11 +25,30 @@ const routes = [
     name: 'Login',
     component: Login
   },
-  ,
   {
     path: '/signup',
     name: 'Signup',
     component: Signup
+  },
+  {
+    path: '/:pathMatch(.*)*',
+    redirect: '/404'
+  },
+  {
+    path: '/404',
+    name: 'NotFound',
+    component: NotFound
+  },
+  // {
+  //   path: '/:catchAll(.*)',
+  //   name: 'NotFound',
+  //   component: NotFound
+  // },
+  {
+    path: '/posts/:id',
+    name: 'PostDetails',
+    component: PostDetails,
+    props: true
   }
 ];
 
