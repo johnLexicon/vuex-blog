@@ -29,7 +29,7 @@
         <option value="politics">Politics</option>
       </select>
     </div>
-    <div class="form-group">
+    <div class="form-group mb-2">
       <label for="author">Author</label>
       <input
         v-model="author"
