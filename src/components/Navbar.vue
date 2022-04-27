@@ -23,7 +23,7 @@
                 >Home</router-link
               >
             </li>
-            <li class="nav-item">
+            <li v-if="user" class="nav-item">
               <router-link class="nav-link active" aria-current="page" to="/new"
                 >New Post</router-link
               >

@@ -5,6 +5,7 @@
       <div>
         {{ post.body }}
       </div>
+      <div class="author">Written by {{ post.author || "Unknown" }}</div>
     </div>
     <div v-if="loading">Loading post...</div>
   </div>

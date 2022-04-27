@@ -29,6 +29,16 @@
         <option value="politics">Politics</option>
       </select>
     </div>
+    <div class="form-group">
+      <label for="author">Author</label>
+      <input
+        v-model="author"
+        type="text"
+        name="author"
+        id="author"
+        class="form-control"
+      />
+    </div>
     <div class="form-group mb-2">
       <button class="btn btn-outline-primary">New Post</button>
     </div>
@@ -43,6 +53,7 @@ export default {
   setup(_, { emit }) {
     const title = ref("");
     const body = ref("");
+    const author = ref("");
     const selectedCategories = ref([]);
 
     function handleSubmit() {
@@ -50,6 +61,7 @@ export default {
       emit("on-submitted", {
         title: title.value,
         body: body.value,
+        author: author.value,
         categories: [...selectedCategories.value],
       });
     }
@@ -57,6 +69,7 @@ export default {
       title,
       body,
       selectedCategories,
+      author,
       handleSubmit,
     };
   },

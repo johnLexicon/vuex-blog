@@ -27,6 +27,30 @@
         "politics"
       ],
       "id": 3
+    },
+    {
+      "title": "Le title",
+      "body": "Ce n'est pas ma fault, mais moi, encore aujourd'hui. Que est-ce que j'ai fais pour cette terre? Rien, j'ai rien fais.",
+      "categories": [
+        "politics"
+      ],
+      "id": 4
+    },
+    {
+      "title": "",
+      "body": "",
+      "categories": [],
+      "id": 5
+    },
+    {
+      "title": "Si yo fuera",
+      "body": "Si yo fuera Maradona, nunca me equivocaría. La vida es una tómbola, de noche y de día.",
+      "author": "Diego",
+      "categories": [
+        "travel",
+        "politics"
+      ],
+      "id": 6
     }
   ]
 }
