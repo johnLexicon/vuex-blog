@@ -11,4 +11,11 @@ app.use(store).use(router);
 // Global mixin example
 app.mixin(loggerMixin);
 
+// Global custom directive
+app.directive('focus', {
+  mounted(elem) {
+    elem.focus();
+  }
+});
+
 app.mount('#app');

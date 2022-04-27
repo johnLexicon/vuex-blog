@@ -2,7 +2,13 @@
   <form @submit.prevent="handleSubmit">
     <div class="form-group mb-2">
       <label for="title">Title</label>
-      <input v-model="title" id="title" type="text" class="form-control" />
+      <input
+        v-focus
+        v-model="title"
+        id="title"
+        type="text"
+        class="form-control"
+      />
     </div>
     <div class="form-group mb-2">
       <label for="body">Content</label>

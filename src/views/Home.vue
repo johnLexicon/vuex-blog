@@ -2,6 +2,7 @@
   <div class="container-md container-fluid pt-5">
     <div class="form-group mb-5">
       <input
+        v-focus
         v-model="searchText"
         type="text"
         class="form-control"

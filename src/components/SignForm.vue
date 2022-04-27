@@ -2,7 +2,13 @@
   <form @submit.prevent="handleSubmit">
     <div class="form-group mb-2">
       <label for="email" class="form-label">Email</label>
-      <input v-model="email" id="email" type="email" class="form-control" />
+      <input
+        v-focus
+        v-model="email"
+        id="email"
+        type="email"
+        class="form-control"
+      />
     </div>
     <div class="form-group mb-2">
       <label for="password" class="form-label">Password</label>
