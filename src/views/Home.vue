@@ -1,15 +1,22 @@
 <template>
-  <div class="container-md container-fluid">
-    <h1>Home</h1>
+  <div class="container-md container-fluid pt-5">
+    <div class="form-group mb-5">
+      <input
+        v-model="searchText"
+        type="text"
+        class="form-control"
+        placeholder="Search..."
+      />
+    </div>
     <div v-if="!loading">
-      <PostsCollection v-for="post in posts" :key="post.id" :post="post" />
+      <PostsCollection :posts="filteredPosts" />
     </div>
     <div v-else>Loading Posts</div>
   </div>
 </template>
 
 <script>
-import { onMounted, ref } from "vue";
+import { onMounted, ref, computed } from "vue";
 import PostsCollection from "@/components/posts/PostsCollection";
 import axios from "axios";
 export default {
@@ -20,10 +27,18 @@ export default {
   setup() {
     const posts = ref([]);
     const loading = ref(true);
+    const searchText = ref("");
 
     onMounted(() => {
       getPosts();
     });
+
+    const filteredPosts = computed(() => {
+      return posts.value.filter((post) =>
+        post.title.toLowerCase().includes(searchText.value.toLowerCase())
+      );
+    });
+
     async function getPosts() {
       try {
         const res = await axios(process.env.VUE_APP_POSTS_API);
@@ -33,7 +48,7 @@ export default {
         console.log(err);
       }
     }
-    return { posts, loading };
+    return { filteredPosts, loading, searchText };
   },
 };
 </script>
