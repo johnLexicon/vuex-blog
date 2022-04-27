@@ -5,6 +5,7 @@ import Signup from '../views/Signup.vue';
 import PostDetails from '../views/PostDetails.vue';
 import NotFound from '../views/NotFound.vue';
 import CreatePost from '../views/CreatePost.vue';
+import store from '@/store';
 
 const routes = [
   {
@@ -15,7 +16,8 @@ const routes = [
   {
     path: '/new',
     name: 'CreatePost',
-    component: CreatePost
+    component: CreatePost,
+    meta: { requiresAuth: true }
   },
   {
     path: '/about',
@@ -61,6 +63,18 @@ const routes = [
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes
+});
+
+router.beforeEach((to, from, next) => {
+  if (to.matched.some((record) => record.meta.requiresAuth)) {
+    if (store.state.user) {
+      next();
+    } else {
+      next({ name: 'Login' });
+    }
+  } else {
+    next();
+  }
 });
 
 export default router;

@@ -51,6 +51,15 @@
         "politics"
       ],
       "id": 6
+    },
+    {
+      "title": "Accidente",
+      "body": "Non potrai mai strappare la corda ed essere libero.",
+      "author": "Zorba",
+      "categories": [
+        "travel"
+      ],
+      "id": 7
     }
   ]
 }
