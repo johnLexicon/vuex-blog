@@ -9,10 +9,12 @@
         placeholder="Search..."
       />
     </div>
-    <div v-if="!loading">
+    <div v-if="filteredPosts.length">
       <PostsCollection :posts="filteredPosts" />
     </div>
-    <div v-else>Loading Posts</div>
+    <div v-if="error" class="alert alert-danger">
+      {{ error }}
+    </div>
   </div>
 </template>
 
@@ -29,6 +31,7 @@ export default {
   setup() {
     const posts = ref([]);
     const loading = ref(true);
+    const error = ref("");
 
     onMounted(() => {
       getPosts();
@@ -43,12 +46,14 @@ export default {
       try {
         const res = await axios(process.env.VUE_APP_POSTS_API);
         posts.value = res.data;
-        loading.value = false;
       } catch (err) {
         console.log(err);
+        error.value = "Failed to fetch blog posts";
+      } finally {
+        loading.value = false;
       }
     }
-    return { filteredPosts, loading, searchText };
+    return { filteredPosts, loading, searchText, error };
   },
 };
 </script>
