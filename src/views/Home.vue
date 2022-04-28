@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import { onMounted, ref, computed } from "vue";
+import { onMounted, ref } from "vue";
 import PostsCollection from "@/components/posts/PostsCollection";
 import useSearch from "@/hooks/search.js";
 import axios from "axios";
@@ -38,12 +38,6 @@ export default {
       posts,
       "title"
     );
-
-    // const filteredPosts = computed(() => {
-    //   return posts.value.filter((post) =>
-    //     post.title.toLowerCase().includes(searchText.value.toLowerCase())
-    //   );
-    // });
 
     async function getPosts() {
       try {
