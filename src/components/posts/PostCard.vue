@@ -1,12 +1,16 @@
 <template>
-  <div class="card shadow rounded border-0 p-2 mb-3">
-    <div class="card-title fw-bold">{{ $props.post.title }}</div>
+  <div class="card shadow rounded border-0 mb-4">
+    <div class="card-header bg-primary text-white text-end">
+      <i type="button" class="fa-solid fa-trash text-danger"></i>
+    </div>
+    <div class="px-2 py-2 card-title fw-bold">{{ $props.post.title }}</div>
     <div class="card-body">{{ $props.post.body.slice(0, 25) }}...</div>
     <div
       class="
         card-footer
         bg-white
         d-flex
+        flex-row-reverse
         justify-content-between
         align-items-center
       "
@@ -36,5 +40,6 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css");
 </style>
