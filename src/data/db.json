@@ -60,6 +60,15 @@
         "travel"
       ],
       "id": 7
+    },
+    {
+      "title": "L'orologio perfetto",
+      "body": "Prima voleva un orologio model Panerai. Ma quanto ho visto il Santos de Cartier mi sono inamorato.",
+      "author": "Luigi",
+      "categories": [
+        "food"
+      ],
+      "id": 8
     }
   ]
 }
