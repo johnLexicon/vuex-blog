@@ -1,5 +1,5 @@
 <template>
-  <div class="container-md container-fluid">
+  <div>
     <div v-if="!loading" class="post-content">
       <h1>{{ post.title }}</h1>
       <div>

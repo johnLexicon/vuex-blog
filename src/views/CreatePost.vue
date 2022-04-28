@@ -1,5 +1,5 @@
 <template>
-  <div class="container-md container-fluid">
+  <div>
     <h1>Create Post</h1>
     <CreatePostForm @on-submitted="handleSubmit" />
   </div>

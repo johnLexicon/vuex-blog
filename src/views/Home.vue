@@ -1,5 +1,5 @@
 <template>
-  <div class="container-md container-fluid pt-5">
+  <div>
     <div class="form-group mb-5">
       <input
         v-focus

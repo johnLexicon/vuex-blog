@@ -1,5 +1,5 @@
 <template>
-  <div class="container-md container-fluid">
+  <div>
     <h1>Signup</h1>
     <sign-form actionName="signup" />
   </div>
