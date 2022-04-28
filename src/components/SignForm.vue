@@ -20,7 +20,9 @@
         class="form-control"
       />
     </div>
-    <button class="btn btn-outline-primary">Submit</button>
+    <div class="text-end">
+      <button class="btn btn-outline-primary">Submit</button>
+    </div>
     <div v-if="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
   </form>
 </template>
