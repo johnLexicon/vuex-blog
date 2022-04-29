@@ -12,16 +12,18 @@
     <div v-if="filteredPosts.length">
       <PostsCollection :posts="filteredPosts" />
     </div>
+    <div v-if="loading">Loading...</div>
     <div v-if="error" class="alert alert-danger">
-      {{ error }}
+      {{ error.message }}
     </div>
   </div>
 </template>
 
 <script>
-import { onMounted, ref } from "vue";
+import { onMounted } from "vue";
 import PostsCollection from "@/components/posts/PostsCollection";
 import useSearch from "@/hooks/search.js";
+import useFetch from "@/hooks/fetchData.js";
 import axios from "axios";
 export default {
   name: "Home",
@@ -29,30 +31,22 @@ export default {
     PostsCollection,
   },
   setup() {
-    const posts = ref([]);
-    const loading = ref(true);
-    const error = ref("");
+    const { data, loading, error, getData } = useFetch(getPosts);
 
     onMounted(() => {
-      getPosts();
+      getData();
     });
 
     const { searchText, filteredItems: filteredPosts } = useSearch(
-      posts,
+      data,
       "title"
     );
 
     async function getPosts() {
-      try {
-        const res = await axios(process.env.VUE_APP_POSTS_API);
-        posts.value = res.data;
-      } catch (err) {
-        console.log(err);
-        error.value = "Failed to fetch blog posts";
-      } finally {
-        loading.value = false;
-      }
+      const res = await axios.get(process.env.VUE_APP_POSTS_API);
+      return res.data;
     }
+
     return { filteredPosts, loading, searchText, error };
   },
 };
