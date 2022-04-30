@@ -1,7 +1,14 @@
 <template>
   <div class="card shadow rounded border-0 mb-4">
     <div class="card-header bg-primary text-white text-end">
-      <i type="button" class="fa-solid fa-trash text-danger"></i>
+      <i
+        class="fa-solid fa-trash text-danger"
+        @click="onDelete"
+        :class="{
+          'text-muted': !$props.loggedIn,
+          enabled: $props.loggedIn,
+        }"
+      ></i>
     </div>
     <div class="px-2 py-2 card-title fw-bold">{{ $props.post.title }}</div>
     <div class="card-body">{{ $props.post.body.slice(0, 25) }}...</div>
@@ -36,10 +43,28 @@ export default {
       type: Object,
       required: true,
     },
+    loggedIn: {
+      type: Boolean,
+      required: true,
+    },
+  },
+  emits: ["handle-delete"],
+  setup(props, { emit }) {
+    function onDelete() {
+      if (!props.loggedIn) return;
+      emit("handle-delete", props.post.id);
+    }
+    return {
+      onDelete,
+    };
   },
 };
 </script>
 
 <style scoped>
 @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css");
+.enabled {
+  cursor: pointer;
+  color: #d60000;
+}
 </style>

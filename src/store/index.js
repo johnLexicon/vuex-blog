@@ -14,6 +14,11 @@ const store = createStore({
     user: null,
     authIsReady: false
   },
+  getters: {
+    isLoggedIn(state) {
+      return Boolean(state.user);
+    }
+  },
   mutations: {
     setUser(state, payload) {
       state.user = payload;

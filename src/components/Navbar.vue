@@ -73,11 +73,13 @@
 
 <script>
 import { useStore } from "vuex";
+import { useRouter } from "vue-router";
 import { computed } from "vue";
 export default {
   name: "Navbar",
   setup() {
     const store = useStore();
+    const router = useRouter();
 
     const user = computed(() => {
       return store.state.user;
@@ -89,6 +91,7 @@ export default {
 
     function handleSignOut() {
       store.dispatch("logout");
+      router.go(); // Refresh the page
     }
 
     return { user, authIsReady, handleSignOut };
