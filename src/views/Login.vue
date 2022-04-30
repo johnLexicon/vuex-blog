@@ -1,16 +1,16 @@
 <template>
   <div>
     <h1>Login</h1>
-    <sign-form actionName="signin" />
+    <SignInForm actionName="auth/signin" />
   </div>
 </template>
 
 <script>
-import SignForm from "@/components/SignForm";
+import SignInForm from "@/components/SignInForm";
 export default {
   name: "Login",
   components: {
-    SignForm,
+    SignInForm,
   },
 };
 </script>

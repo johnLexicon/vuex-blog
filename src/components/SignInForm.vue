@@ -4,31 +4,24 @@
       <label for="email" class="form-label">Email</label>
       <input
         v-focus
-        v-model="validationModel.email.$model"
+        v-model="email"
         id="email"
         type="email"
         class="form-control"
       />
-      <ValidationMessage :model="validationModel.email" class="pt-2" />
     </div>
     <div class="form-group mb-2">
       <label for="password" class="form-label">Password</label>
       <input
-        v-model="validationModel.password.$model"
+        v-model="password"
         type="password"
         name="password"
         id="password"
         class="form-control"
       />
-      <ValidationMessage :model="validationModel.password" class="pt-2" />
     </div>
     <div class="text-end">
-      <button
-        class="btn btn-outline-primary"
-        :disabled="validationModel.$invalid"
-      >
-        Submit
-      </button>
+      <button class="btn btn-outline-primary">Login</button>
     </div>
     <div v-if="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
   </form>
@@ -38,13 +31,9 @@
 import { ref } from "vue";
 import { useStore } from "vuex";
 import { useRouter } from "vue-router";
-import userValidation from "@/models/UserValidation.js";
-import ValidationMessage from "@/components/ValidationMessage";
 export default {
   name: "SignForm",
-  components: {
-    ValidationMessage,
-  },
+  components: {},
   props: {
     actionName: {
       type: String,
@@ -55,16 +44,12 @@ export default {
     const store = useStore();
     const router = useRouter();
 
-    // const email = ref("");
-    // const password = ref("");
-    const validationModel = userValidation.toModel();
+    const email = ref("");
+    const password = ref("");
     const errorMessage = ref(null);
 
     async function handleSubmit() {
       try {
-        const valid = await validationModel.value.$validate();
-        if (!valid) return;
-
         await store.dispatch(props.actionName, {
           email: email.value,
           password: password.value,
@@ -77,9 +62,8 @@ export default {
     }
 
     return {
-      // email,
-      // password,
-      validationModel,
+      email,
+      password,
       handleSubmit,
       errorMessage,
     };

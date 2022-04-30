@@ -28,7 +28,7 @@ export default {
     const store = useStore();
     let isLoggedIn = ref(false);
 
-    isLoggedIn.value = store.getters["isLoggedIn"];
+    isLoggedIn.value = store.getters["auth/isLoggedIn"];
 
     async function handleDelete(postId) {
       try {

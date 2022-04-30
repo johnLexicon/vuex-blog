@@ -80,17 +80,17 @@ export default {
   setup() {
     const store = useStore();
     const router = useRouter();
-
+    console.log(store);
     const user = computed(() => {
-      return store.state.user;
+      return store.getters["auth/user"];
     });
 
     const authIsReady = computed(() => {
-      return store.state.authIsReady;
+      return store.getters["auth/authIsReady"];
     });
 
     function handleSignOut() {
-      store.dispatch("logout");
+      store.dispatch("auth/logout");
       router.go(); // Refresh the page
     }
 
