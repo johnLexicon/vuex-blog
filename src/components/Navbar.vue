@@ -80,7 +80,6 @@ export default {
   setup() {
     const store = useStore();
     const router = useRouter();
-    console.log(store);
     const user = computed(() => {
       return store.getters["auth/user"];
     });
@@ -91,7 +90,6 @@ export default {
 
     function handleSignOut() {
       store.dispatch("auth/logout");
-      router.go(); // Refresh the page
     }
 
     return { user, authIsReady, handleSignOut };

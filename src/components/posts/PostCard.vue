@@ -3,10 +3,10 @@
     <div class="card-header bg-primary text-white text-end">
       <i
         class="fa-solid fa-trash text-danger"
-        @click="onDelete"
+        @click="removePost($props.post.id)"
         :class="{
-          'text-muted': !$props.loggedIn,
-          enabled: $props.loggedIn,
+          'text-muted': !isLoggedIn,
+          enabled: isLoggedIn,
         }"
       ></i>
     </div>
@@ -36,6 +36,7 @@
 </template>
 
 <script>
+import { mapActions, mapGetters } from "vuex";
 export default {
   name: "PostCard",
   props: {
@@ -43,20 +44,12 @@ export default {
       type: Object,
       required: true,
     },
-    loggedIn: {
-      type: Boolean,
-      required: true,
-    },
   },
-  emits: ["handle-delete"],
-  setup(props, { emit }) {
-    function onDelete() {
-      if (!props.loggedIn) return;
-      emit("handle-delete", props.post.id);
-    }
-    return {
-      onDelete,
-    };
+  computed: {
+    ...mapGetters("auth", ["isLoggedIn"]),
+  },
+  methods: {
+    ...mapActions("posts", ["removePost"]),
   },
 };
 </script>

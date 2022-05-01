@@ -20,34 +20,35 @@
 </template>
 
 <script>
-import { onMounted } from "vue";
 import PostsCollection from "@/components/posts/PostsCollection";
-import useSearch from "@/hooks/search.js";
-import useFetch from "@/hooks/fetchData.js";
-import axios from "axios";
+import { mapGetters, mapActions } from "vuex";
 export default {
   name: "Home",
   components: {
     PostsCollection,
   },
-  setup() {
-    const { data, loading, error, getData } = useFetch(getPosts);
-
-    onMounted(() => {
-      getData();
-    });
-
-    const { searchText, filteredItems: filteredPosts } = useSearch(
-      data,
-      "title"
-    );
-
-    async function getPosts() {
-      const res = await axios.get(process.env.VUE_APP_POSTS_API);
-      return res.data;
+  data() {
+    return {
+      error: null,
+      searchText: "",
+    };
+  },
+  created() {
+    try {
+      this.fetchPosts();
+    } catch (err) {
+      this.error = err;
     }
-
-    return { filteredPosts, loading, searchText, error };
+  },
+  computed: {
+    ...mapGetters("posts", ["isLoading", "posts"]),
+    filteredPosts() {
+      if (this.isLoading) return [];
+      return this.posts.filter((post) => post.title.includes(this.searchText));
+    },
+  },
+  methods: {
+    ...mapActions("posts", ["fetchPosts"]),
   },
 };
 </script>
