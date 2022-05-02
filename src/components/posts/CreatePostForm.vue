@@ -38,16 +38,6 @@
       </select>
     </div>
     <div class="form-group mb-3">
-      <label for="author">Author</label>
-      <input
-        v-model="author"
-        type="text"
-        name="author"
-        id="author"
-        class="form-control"
-      />
-    </div>
-    <div class="form-group mb-3">
       <button
         :disabled="validationModel.$invalid"
         class="btn btn-outline-primary"
@@ -69,7 +59,6 @@ export default {
     ValidationMessage,
   },
   setup(_, { emit }) {
-    const author = ref("");
     const selectedCategories = ref([]);
 
     const validationModel = postValidation.toModel();
@@ -81,13 +70,11 @@ export default {
       emit("on-submitted", {
         title: validationModel.value.title.$model,
         body: validationModel.value.body.$model,
-        author: author.value,
         categories: [...selectedCategories.value],
       });
     }
     return {
       selectedCategories,
-      author,
       validationModel,
       handleSubmit,
     };

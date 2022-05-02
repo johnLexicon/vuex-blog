@@ -7,7 +7,6 @@
 
 <script>
 import CreatePostForm from "@/components/posts/CreatePostForm";
-import axios from "axios";
 export default {
   name: "CreatePost",
   components: {
@@ -16,8 +15,7 @@ export default {
   methods: {
     async handleSubmit(newPost) {
       try {
-        const res = await axios.post(process.env.VUE_APP_POSTS_API, newPost);
-        console.log(res);
+        this.$store.dispatch("posts/createPost", newPost);
         this.$router.push("/");
       } catch (err) {
         console.log(err);

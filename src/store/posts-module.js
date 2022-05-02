@@ -17,6 +17,9 @@ export default {
     setIsLoading(state, payload) {
       state.isLoading = payload;
     },
+    addPost(state, payload) {
+      state.posts.unshift(payload);
+    },
     removePost(state, payload) {
       state.posts = state.posts.filter((post) => post.id !== payload);
     }
@@ -32,6 +35,18 @@ export default {
         throw err;
       } finally {
         context.commit('setIsLoading', false);
+      }
+    },
+    async createPost(context, payload) {
+      try {
+        const user = context.rootGetters['auth/user'];
+        console.log('User:', user);
+        const newPost = { ...payload, author: user.displayName };
+        await axios.post(process.env.VUE_APP_POSTS_API, newPost);
+        context.commit('addPost', newPost);
+      } catch (err) {
+        console.log(err);
+        throw err;
       }
     },
     async removePost(context, payload) {
