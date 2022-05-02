@@ -22,6 +22,17 @@
       ],
       "author": "Toni",
       "id": 3
+    },
+    {
+      "title": "Posto pieno di categorie",
+      "body": "Avere se rendere le categorie funziona.",
+      "categories": [
+        "travel",
+        "food",
+        "politics"
+      ],
+      "author": "Toni",
+      "id": 4
     }
   ]
 }

@@ -12,6 +12,14 @@
     </div>
     <div class="px-2 py-2 card-title fw-bold">{{ $props.post.title }}</div>
     <div class="card-body">{{ $props.post.body.slice(0, 25) }}...</div>
+    <div class="py-3 categories">
+      <span
+        v-for="category in $props.post.categories"
+        :key="category"
+        class="px-3 mx-3 bg-danger text-white rounded"
+        >{{ category }}</span
+      >
+    </div>
     <div
       class="
         card-footer
