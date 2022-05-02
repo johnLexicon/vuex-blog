@@ -12,7 +12,7 @@
     <div v-if="filteredPosts.length">
       <PostsCollection :posts="filteredPosts" />
     </div>
-    <div v-if="loading">Loading...</div>
+    <div v-if="isLoading">Loading...</div>
     <div v-if="error" class="alert alert-danger">
       {{ error.message }}
     </div>
