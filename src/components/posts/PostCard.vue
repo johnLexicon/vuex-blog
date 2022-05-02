@@ -3,7 +3,7 @@
     <div class="card-header bg-primary text-white text-end">
       <i
         class="fa-solid fa-trash text-danger"
-        @click="removePost($props.post.id)"
+        @click="handleRemove"
         :class="{
           'text-muted': !isLoggedIn,
           enabled: isLoggedIn,
@@ -50,6 +50,10 @@ export default {
   },
   methods: {
     ...mapActions("posts", ["removePost"]),
+    handleRemove() {
+      if (!this.isLoggedIn) return;
+      this.removePost(this.$props.post.id);
+    },
   },
 };
 </script>
