@@ -3,7 +3,8 @@ import { auth } from '@/firebase/config.js';
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
-  signOut
+  signOut,
+  updateProfile
 } from 'firebase/auth';
 
 export default {
@@ -40,7 +41,8 @@ export default {
         payload.password
       );
       if (res) {
-        context.commit('setUser', res.user);
+        await updateProfile(auth.currentUser, { displayName: payload.name });
+        context.commit('setUser', auth.currentUser);
       } else {
         throw new Error('Could not signup');
       }
