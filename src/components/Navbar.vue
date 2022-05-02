@@ -88,8 +88,9 @@ export default {
       return store.getters["auth/authIsReady"];
     });
 
-    function handleSignOut() {
-      store.dispatch("auth/logout");
+    async function handleSignOut() {
+      await store.dispatch("auth/logout");
+      router.go("/");
     }
 
     return { user, authIsReady, handleSignOut };
