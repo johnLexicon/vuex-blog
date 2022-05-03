@@ -6,7 +6,7 @@
     <div class="card-body">{{ $props.post.body }}</div>
     <div class="py-3 categories">
       <span
-        v-for="category in $props.post.categories"
+        v-for="category in capitalizedCategories"
         :key="category"
         class="px-3 mx-3 bg-danger text-white rounded"
         >{{ category }}</span
@@ -21,6 +21,7 @@
 </template>
 
 <script>
+import capitalize from "@/hooks/capitalize.js";
 export default {
   name: "PostDetailsCard",
   props: {
@@ -28,6 +29,12 @@ export default {
       type: Object,
       required: true,
     },
+  },
+  setup(props) {
+    const capitalizedCategories = capitalize(props.post.categories);
+    return {
+      capitalizedCategories,
+    };
   },
 };
 </script>

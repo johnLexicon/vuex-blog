@@ -14,7 +14,7 @@
     <div class="card-body">{{ $props.post.body.slice(0, 25) }}...</div>
     <div class="py-3 categories">
       <span
-        v-for="category in $props.post.categories"
+        v-for="category in capitalizedCategories"
         :key="category"
         class="px-3 mx-3 bg-danger text-white rounded"
         >{{ category }}</span
@@ -45,6 +45,7 @@
 
 <script>
 import { mapActions, mapGetters } from "vuex";
+import capitalize from "@/hooks/capitalize.js";
 export default {
   name: "PostCard",
   props: {
@@ -52,6 +53,12 @@ export default {
       type: Object,
       required: true,
     },
+  },
+  setup(props) {
+    const capitalizedCategories = capitalize(props.post.categories);
+    return {
+      capitalizedCategories,
+    };
   },
   computed: {
     ...mapGetters("auth", ["isLoggedIn"]),
