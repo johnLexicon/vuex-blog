@@ -8,7 +8,8 @@ export default {
   },
   getters: {
     isLoading: (state) => state.isLoading,
-    posts: (state) => state.posts
+    posts: (state) => state.posts,
+    post: (state) => (postId) => state.posts.find((post) => post.id === postId)
   },
   mutations: {
     setPosts(state, payload) {
