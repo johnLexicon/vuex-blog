@@ -1,38 +1,18 @@
 {
   "posts": [
     {
-      "title": "Uno",
-      "body": "Uno mas texto",
-      "author": "",
+      "title": "React Hooks",
+      "body": "How do you feel about a beginner's guide to React useState hook? ☕\n\nThe useState hook allows us to have state variables in the JSX functional component. It takes one argument which is the initial state and returns a state value and a function to update it.\n\nuseState is a named export from React. So, we can either do - import { useState } from 'react' or simply - React.useState.\n\nNow, to dive in more into the understanding and implementation, as well as in the comparing it to a class-based component or how to handle multiple states in a single component, check out the full article with detailed examples, in the comment below 💬\n\nBy the way, a quick reminder on the topic - we can only use useState (or any other hook) inside a function component. Also React Hooks must be called in the same order in every component render, in simpler words, any hook should be at the very top and inside the function component without any unnecessary check, loops, etc.\n\nNow there are some common mistakes that we can definitely avoid.\n\n❌ Never ever update the state directly. Instead, we have a function (remember setCount function?) that will manipulate the state variable as we need.\n❌ Don't complicate it. In order to use useState effectively, we absolutely want to change and mutate the state variable based on its initial state, and don't want unexpected rendering.\n\nStill not enough?\nIf you're still questioning why would someone use a hook, well here are our top 4 reasons why:\n\ni. It's easier to test;\nii. Provides good readability;\niii. Has a performance boost;\niv. Provides reduction in bundle size.\n\nArticle by Abhinav Anshul\n\nKeep reading in detail, link in the comments 👇",
       "categories": [],
-      "id": 1
+      "author": null,
+      "id": 5
     },
     {
-      "title": "Dos",
-      "body": "Dos mas texto",
-      "author": "",
+      "title": "TNG",
+      "body": "Brinner du genuint för nyförsäljning och affärsutveckling? Vill du vara en del av Epassi tillväxtresa? Sök redan idag!\n\nLockas du av en roll där du får en möjlighet att självständigt bygga relation med nya leverantörer och driva säljprocessen för att utveckla lunchkortsaffären? Skulle du trivas i ett modernt tillväxtföretag som erbjuder en innovativ digital tjänst för hantering av friskvårdsbidraget och andra hälsoförmåner? Urval sker löpande så skicka in din ansökan redan idag!",
       "categories": [],
-      "id": 2
-    },
-    {
-      "title": "Provare l'autore",
-      "body": "Avere se il nuovo autore funziona.",
-      "categories": [
-        "food"
-      ],
-      "author": "Toni",
-      "id": 3
-    },
-    {
-      "title": "Posto pieno di categorie",
-      "body": "Avere se rendere le categorie funziona.",
-      "categories": [
-        "travel",
-        "food",
-        "politics"
-      ],
-      "author": "Toni",
-      "id": 4
+      "author": null,
+      "id": 6
     }
   ]
 }

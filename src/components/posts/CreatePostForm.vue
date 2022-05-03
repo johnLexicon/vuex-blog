@@ -4,29 +4,29 @@
       <label for="title">Title</label>
       <input
         v-focus
-        v-model="validationModel.title.$model"
+        v-model="v$.title.$model"
         id="title"
         type="text"
         class="form-control"
       />
-      <ValidationMessage :model="validationModel.title" class="pt-2" />
+      <ValidationMessage :model="v$.title" class="pt-2" />
     </div>
     <div class="form-group mb-3">
       <label for="body">Content</label>
       <textarea
-        v-model="validationModel.body.$model"
+        v-model="v$.body.$model"
         class="form-control"
         name="body"
         id="body"
         cols="30"
         rows="10"
       ></textarea>
-      <ValidationMessage :model="validationModel.body" class="pt-1" />
+      <ValidationMessage :model="v$.body" class="pt-1" />
     </div>
     <div class="form-group mb-3">
       <label for="categories">Categories</label>
       <select
-        v-model="selectedCategories"
+        v-model="v$.selectedCategories.$model"
         multiple
         name="categories"
         id="categories"
@@ -38,10 +38,7 @@
       </select>
     </div>
     <div class="form-group mb-3">
-      <button
-        :disabled="validationModel.$invalid"
-        class="btn btn-outline-primary"
-      >
+      <button :disabled="v$.$invalid" class="btn btn-outline-primary">
         New Post
       </button>
     </div>
@@ -49,8 +46,9 @@
 </template>
 
 <script>
-import { ref } from "vue";
-import postValidation from "@/models/PostValidation.js";
+import { ref, reactive, computed, nextTick } from "vue";
+import { useVuelidate } from "@vuelidate/core";
+import { required, minLength } from "@vuelidate/validators";
 import ValidationMessage from "@/components/ValidationMessage";
 export default {
   name: "CreatePostForm",
@@ -59,23 +57,34 @@ export default {
     ValidationMessage,
   },
   setup(_, { emit }) {
-    const selectedCategories = ref([]);
-
-    const validationModel = postValidation.toModel();
+    const state = reactive({
+      title: "",
+      body: "",
+      selectedCategories: ref([]),
+    });
+    const rules = computed(() => {
+      return {
+        title: { required, minLength: minLength(2) },
+        body: { required, minLength: minLength(10) },
+        selectedCategories: {},
+      };
+    });
+    const v$ = useVuelidate(rules, state);
 
     async function handleSubmit() {
-      const valid = await validationModel.value.$validate();
+      const valid = await v$.value.$validate();
       if (!valid) return;
 
       emit("on-submitted", {
-        title: validationModel.value.title.$model,
-        body: validationModel.value.body.$model,
-        categories: [...selectedCategories.value],
+        title: v$.value.title.$model,
+        body: v$.value.body.$model,
+        categories: v$.value.selectedCategories.$model,
       });
+      await nextTick();
+      v$.value.$reset();
     }
     return {
-      selectedCategories,
-      validationModel,
+      v$,
       handleSubmit,
     };
   },
