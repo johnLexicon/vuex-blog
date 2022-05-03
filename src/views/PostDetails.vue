@@ -1,23 +1,22 @@
 <template>
   <div>
     <div v-if="!loading" class="post-content">
-      <h1>{{ post.title }}</h1>
-      <div>
-        {{ post.body }}
-      </div>
-      <div class="author">Written by {{ post.author || "Unknown" }}</div>
+      <PostDetailsCard class="mt-5" :post="post" />
     </div>
-    <div v-if="loading">Loading post...</div>
   </div>
 </template>
 
 <script>
 import { ref, onMounted } from "vue";
 import { useRouter } from "vue-router";
+import PostDetailsCard from "@/components/posts/PostDetailsCard";
 import axios from "axios";
 export default {
   name: "PostsDetails",
   props: ["id"],
+  components: {
+    PostDetailsCard,
+  },
   setup(props) {
     const router = useRouter();
     let post = ref(null);

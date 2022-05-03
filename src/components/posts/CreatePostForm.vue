@@ -34,6 +34,14 @@
       >
         <option value="travel">Travel</option>
         <option value="food">Food</option>
+        <option value="health">Health</option>
+        <option value="fashion">Fashion</option>
+        <option value="photography">Photography</option>
+        <option value="music">Music</option>
+        <option value="art">Art</option>
+        <option value="sports">Sports</option>
+        <option value="news">News</option>
+        <option value="religion">Religion</option>
         <option value="politics">Politics</option>
       </select>
     </div>
