@@ -31,7 +31,7 @@
       "
     >
       <router-link
-        :to="{ name: 'PostDetails', params: { id: $props.post.id } }"
+        :to="{ name: 'PostDetails', params: { id: $props.post._id } }"
         class="btn btn-outline-primary"
       >
         Read more...
