@@ -67,7 +67,7 @@ export default {
     ...mapActions("posts", ["removePost"]),
     handleRemove() {
       if (!this.isLoggedIn) return;
-      this.removePost(this.$props.post.id);
+      this.removePost(this.$props.post._id);
     },
   },
 };
