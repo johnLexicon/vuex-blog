@@ -22,7 +22,7 @@ export default {
       state.posts.unshift(payload);
     },
     removePost(state, payload) {
-      state.posts = state.posts.filter((post) => post.id !== payload);
+      state.posts = state.posts.filter((post) => post._id !== payload);
     }
   },
   actions: {
