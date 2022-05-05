@@ -1,4 +1,5 @@
 import axios from 'axios';
+import urlJoin from 'url-join';
 
 export default {
   namespaced: true,
@@ -52,7 +53,11 @@ export default {
     },
     async removePost(context, payload) {
       try {
-        await axios.delete(`${process.env.VUE_APP_POSTS_API}${payload}`);
+        const apiUrl = urlJoin(
+          process.env.VUE_APP_POSTS_API,
+          payload.toString()
+        );
+        await axios.delete(apiUrl);
         context.commit('removePost', payload);
       } catch (err) {
         console.log(err);
