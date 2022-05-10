@@ -34,6 +34,15 @@
       ],
       "author": null,
       "_id": 8
+    },
+    {
+      "title": "Encore un fois",
+      "body": "Mais moi, encore aujourd'hui, qu'est-ce que je fait pour cette terre.",
+      "categories": [
+        "art"
+      ],
+      "author": null,
+      "_id": 9
     }
   ]
 }

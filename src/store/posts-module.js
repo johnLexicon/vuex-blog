@@ -44,8 +44,8 @@ export default {
         const user = context.rootGetters['auth/user'];
         console.log('User:', user);
         const newPost = { ...payload, author: user.displayName };
-        await axios.post(process.env.VUE_APP_POSTS_API, newPost);
-        context.commit('addPost', newPost);
+        const res = await axios.post(process.env.VUE_APP_POSTS_API, newPost);
+        context.commit('addPost', { ...newPost, _id: res.data._id });
       } catch (err) {
         console.log(err);
         throw err;
