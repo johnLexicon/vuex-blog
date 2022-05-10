@@ -20,7 +20,7 @@ export default {
       state.isLoading = payload;
     },
     addPost(state, payload) {
-      state.posts.unshift(payload);
+      state.posts.push(payload);
     },
     removePost(state, payload) {
       state.posts = state.posts.filter((post) => post._id !== payload);
